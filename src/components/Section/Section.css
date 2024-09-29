@@ -1,0 +1,6 @@
+.Section__inner {
+  margin: auto;
+  padding: 10px;
+  min-width: 320px;
+  max-width: 1000px;
+}
