@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "tsc -b && vite build",
+    "preview": "yarn build && vite preview",
     "dev": "vite"
   },
   "dependencies": {
