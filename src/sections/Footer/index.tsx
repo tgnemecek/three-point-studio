@@ -4,7 +4,7 @@ import Section from "../../components/Section";
 import SocialLink from "../../components/SocialLink";
 import styled from "styled-components";
 
-const HEIGHT = 200;
+const HEIGHT = 150;
 
 const Footer: React.FC = () => {
   return (
