@@ -5,15 +5,6 @@ import Section from "../../components/Section";
 const Hero: React.FC = () => {
   return (
     <Section>
-      <h1
-        style={{
-          textAlign: "right",
-          fontSize: "1.2rem",
-          color: "#3a3a3a",
-        }}
-      >
-        Three Point Studio
-      </h1>
       <img
         alt="Crystal Fortress Logo"
         src={crystalFortressLogo}

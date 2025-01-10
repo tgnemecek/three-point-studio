@@ -1,5 +1,6 @@
 import React from "react";
 import "./Section.css";
+import styled from "styled-components";
 
 type SectionProps = {
   children: React.ReactNode;
@@ -9,9 +10,16 @@ type SectionProps = {
 const Section: React.FC<SectionProps> = ({ children, backgroundColor }) => {
   return (
     <section style={{ backgroundColor }}>
-      <div className="Section__inner">{children}</div>
+      <StyledInner>{children}</StyledInner>
     </section>
   );
 };
+
+const StyledInner = styled.div`
+  margin: auto;
+  padding: 10px;
+  min-width: 320px;
+  max-width: 1000px;
+`;
 
 export default Section;

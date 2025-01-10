@@ -13,14 +13,15 @@ const SocialLink: React.FC<SocialLinkProps> = ({ children, href }) => {
       style={{
         display: "flex",
         alignItems: "center",
-        justifyContent: "center",
+        justifyContent: "flex-start",
         color: "white",
         backgroundColor: "black",
         width: 170,
-        height: 40,
+        height: 45,
         borderRadius: 16,
         gap: 5,
         marginBottom: 20,
+        paddingLeft: 20,
       }}
     >
       {children}
