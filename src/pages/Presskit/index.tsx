@@ -53,8 +53,9 @@ const Presskit = () => {
           our debut title, and we are excited to share it with players
           worldwide.
         </StyledParagraph>
-        <StyledParagraph>[Video here]</StyledParagraph>
-        <StyledParagraph>[Assets here]</StyledParagraph>
+        <StyledParagraph>
+          For media inquiries, reach out to: thiago.threepointstudio@gmail.com
+        </StyledParagraph>
       </Section>
     </div>
   );

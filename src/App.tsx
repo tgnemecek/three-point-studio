@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import TopBar from "./sections/TopBar";
 import Footer from "./sections/Footer";
 import Home from "./pages/Home";
@@ -8,7 +8,7 @@ import styled from "styled-components";
 const App = () => {
   return (
     <StyledWrapper>
-      <BrowserRouter>
+      <HashRouter>
         <StyledInnerContainer>
           <TopBar />
           <Routes>
@@ -17,7 +17,7 @@ const App = () => {
           </Routes>
         </StyledInnerContainer>
         <Footer />
-      </BrowserRouter>
+      </HashRouter>
     </StyledWrapper>
   );
 };
