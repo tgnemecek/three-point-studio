@@ -1,6 +1,12 @@
 import styled from "styled-components";
+import YouTube from "react-youtube";
 import Section from "../../components/Section";
 import Hero from "../../sections/Hero";
+
+const VIDEO_DATA = {
+  id: "s-YpILLFCac",
+  title: "Crystal Fortress - Reveal Trailer",
+};
 
 const Presskit = () => {
   return (
@@ -47,6 +53,7 @@ const Presskit = () => {
           Prepare your defenses, summon your forces, and stand your ground in
           the ultimate battle for the Crystal Fortress!
         </StyledAside>
+        <StyledYoutube videoId={VIDEO_DATA.id} title={VIDEO_DATA.title} />
         <StyledParagraph>
           Three-Point Studio is an indie game development team passionate about
           creating engaging and fresh gaming experiences. Crystal Fortress marks
@@ -54,7 +61,8 @@ const Presskit = () => {
           worldwide.
         </StyledParagraph>
         <StyledParagraph>
-          For media inquiries, reach out to: thiago.threepointstudio@gmail.com
+          For media inquiries, reach out to:
+          <strong> contact@wearethreepointstudio.com</strong>
         </StyledParagraph>
       </Section>
     </div>
@@ -73,6 +81,12 @@ const StyledAside = styled.aside`
 
 const StyledParagraph = styled.p`
   margin-bottom: 25px;
+`;
+
+const StyledYoutube = styled(YouTube)`
+  display: flex;
+  justify-content: center;
+  margin: 25px 0;
 `;
 
 export default Presskit;
