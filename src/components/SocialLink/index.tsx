@@ -1,32 +1,30 @@
 import React from "react";
+import Icon, { IconName } from "../Icon";
+import styled from "styled-components";
 
 type SocialLinkProps = {
-  children: React.ReactNode;
   href: string;
+  name: string;
+  logo: IconName;
+  size?: number;
 };
 
-const SocialLink: React.FC<SocialLinkProps> = ({ children, href }) => {
+const SocialLink: React.FC<SocialLinkProps> = ({
+  href,
+  name,
+  logo,
+  size = 25,
+}) => {
   return (
-    <a
-      href={href}
-      target="__blank"
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "flex-start",
-        color: "white",
-        backgroundColor: "black",
-        width: 170,
-        height: 45,
-        borderRadius: 16,
-        gap: 5,
-        marginBottom: 20,
-        paddingLeft: 20,
-      }}
-    >
-      {children}
-    </a>
+    <StyledLink href={href} target="__blank" aria-label={name} $size={size}>
+      <Icon icon={logo} />
+    </StyledLink>
   );
 };
+
+const StyledLink = styled.a<{ $size: number }>`
+  display: flex;
+  width: ${({ $size }) => $size}px;
+`;
 
 export default SocialLink;
