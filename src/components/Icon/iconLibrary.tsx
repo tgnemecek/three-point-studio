@@ -79,6 +79,33 @@ const ICON_LIBRARY: IconLibrary = {
       ></path>
     </svg>
   ),
+  download: ({ color }) => (
+    <svg height="19px" version="1.1" viewBox="0 0 14 19" width="14px">
+      <title />
+      <desc />
+      <defs />
+      <g
+        fill="none"
+        fill-rule="evenodd"
+        id="Page-1"
+        stroke="none"
+        stroke-width="1"
+      >
+        <g
+          fill={color}
+          id="Core"
+          transform="translate(-383.000000, -213.000000)"
+        >
+          <g id="file-download" transform="translate(383.000000, 213.500000)">
+            <path
+              d="M14,6 L10,6 L10,0 L4,0 L4,6 L0,6 L7,13 L14,6 L14,6 Z M0,15 L0,17 L14,17 L14,15 L0,15 L0,15 Z"
+              id="Shape"
+            />
+          </g>
+        </g>
+      </g>
+    </svg>
+  ),
 };
 
 type IconFnProps = { color?: string };
@@ -86,7 +113,7 @@ type IconFnProps = { color?: string };
 type IconFn = (props: IconFnProps) => JSX.Element;
 
 type IconLibrary = Record<
-  "bluesky" | "discord" | "instagram" | "steam",
+  "bluesky" | "discord" | "instagram" | "steam" | "download",
   IconFn
 >;
 

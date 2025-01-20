@@ -1,0 +1,1 @@
+Defenda a Fortaleza de Cristal e seu povo de forças invasoras nessa mistura de RPG Tático em Turnos e Tower Defense. Convoque a infantaria e os arqueiros, posicione as torres. Utilize todas as ferramentas disponíveis para conter os inimigos!

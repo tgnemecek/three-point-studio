@@ -1,0 +1,22 @@
+{
+  "joinCommunity": {
+    "en": "Join our community!",
+    "pt": "Junte-se à nossa comunidade!"
+  },
+  "downloadImageAssets": {
+    "en": "Download Image Assets",
+    "pt": "Baixar Assets de Imagens"
+  },
+  "goToStorePage": {
+    "en": "Go To Store Page",
+    "pt": "Ir para Página da Steam"
+  },
+  "wishlistOnSteam": {
+    "en": "Wishlist on Steam",
+    "pt": "Adicione à Lista na Steam"
+  },
+  "available": {
+    "en": "Available",
+    "pt": "Disponível"
+  }
+}

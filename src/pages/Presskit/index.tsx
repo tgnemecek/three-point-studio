@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import styled from "styled-components";
 import YouTube from "react-youtube";
 import Section from "../../components/Section";
+import Content from "../../components/Content";
+import LanguageContext from "../../LanguageContext";
+import Icon from "../../components/Icon";
 import Hero from "../../sections/Hero";
 
 const VIDEO_DATA = {
@@ -8,79 +12,121 @@ const VIDEO_DATA = {
   title: "Crystal Fortress - Reveal Trailer",
 };
 
-const Presskit = () => {
+type PresskitProps = {
+  gameId: "crystalFortress";
+};
+
+const Presskit = ({ gameId }: PresskitProps) => {
+  const { language } = useContext(LanguageContext);
+
   return (
     <div>
-      <Hero />
+      <Hero
+        backgroundImage={Content.getImage((c) => c[gameId].background)}
+        image={(c) => c[gameId].logoHorizontal}
+        alt={`${Content.getSpecs((c) => c[gameId].title)} logo`}
+      />
       <Section>
-        <StyledHeading>
-          Defend Your Kingdom in Crystal Fortress — A Turn-Based Tower Defense
-          Game Coming February 2025
-        </StyledHeading>
-        <StyledParagraph>
-          January 10, 2025 — Indie game developers at Three-Point Studio are
-          thrilled to announce the release of Crystal Fortress, an exciting
-          blend of Turn-Based Tactics and Tower Defense gameplay, launching on
-          Steam this <strong>February 2025</strong>. Players will immerse
-          themselves in a gripping battle to defend the Crystal Fortress and its
-          people from unrelenting invaders.
-        </StyledParagraph>
-        <StyledAside>
-          "This fortress is our home. We will not let the enemy shatter it." —
-          Captain Phoebe of the Crystal Guard
-        </StyledAside>
-        <StyledParagraph>
-          Take command of Captain Phoebe, a fierce warrior, skilled archer,
-          resourceful engineer, and fearless leader of the Crystal Guard. Armed
-          with strategy and determination, you'll summon powerful soldiers and
-          snipers, deploy turrets on the battlefield, and lead Phoebe into the
-          fray to ensure the fortress' survival.
-        </StyledParagraph>
-        <StyledParagraph>
-          Crystal Fortress offers an innovative mix of tactical thinking and
-          fast-paced action. Players will need to strategize and adapt to outwit
-          cunning enemies while balancing troop deployment and combat. With its
-          charming medieval fantasy pixel-art setting, Crystal Fortress delivers
-          an experience that is rewarding for strategy enthusiasts and
-          approachable for players not familiar with the genre.
-        </StyledParagraph>
-        <StyledParagraph>
-          Crystal Fortress will be available on Steam starting{" "}
-          <strong>February 2025</strong>. Add the game to your wishlist now to
-          receive updates and notifications about the launch.
-        </StyledParagraph>
-        <StyledAside>
-          Prepare your defenses, summon your forces, and stand your ground in
-          the ultimate battle for the Crystal Fortress!
-        </StyledAside>
-        <StyledYoutube videoId={VIDEO_DATA.id} title={VIDEO_DATA.title} />
-        <StyledParagraph>
-          Three-Point Studio is an indie game development team passionate about
-          creating engaging and fresh gaming experiences. Crystal Fortress marks
-          our debut title, and we are excited to share it with players
-          worldwide.
-        </StyledParagraph>
-        <StyledParagraph>
-          For media inquiries, reach out to:
-          <strong> contact@wearethreepointstudio.com</strong>
-        </StyledParagraph>
+        <StyledWrapper>
+          <StyledAside>
+            <StyledVerticalLogo
+              image={(c) => c[gameId].logoVertical}
+              alt={`${Content.getSpecs((c) => c[gameId].title)} vertical logo`}
+            />
+            <StyledAsideTitle>
+              {Content.getSpecs((c) => c.crystalFortress.title)}
+            </StyledAsideTitle>
+            <StyledAsideButton
+              $iconSize={20}
+              href={Content.getSpecs((c) => c.crystalFortress.assetKit)}
+              target="__blank"
+              rel="noreferrer"
+            >
+              {Content.getGeneral((c) => c.downloadImageAssets[language])}
+              <Icon icon="download" color="white" />
+            </StyledAsideButton>
+            <StyledAsideButton
+              $iconSize={25}
+              href={Content.getSpecs((c) => c.crystalFortress.steamLink)}
+              target="__blank"
+              rel="noreferrer"
+            >
+              {Content.getGeneral((c) => c.goToStorePage[language])}
+              <Icon icon="steam" color="white" />
+            </StyledAsideButton>
+          </StyledAside>
+          <StyledCard>
+            <Content text={(c) => c[gameId].pressRelease} />
+            <StyledYoutube videoId={VIDEO_DATA.id} title={VIDEO_DATA.title} />
+            <Content text={(c) => c.studio.pressRelease} />
+          </StyledCard>
+        </StyledWrapper>
       </Section>
     </div>
   );
 };
 
-const StyledHeading = styled.h2`
-  margin-bottom: 15px;
+const MEDIA_QUERY = `@media screen and (max-width: 900px)`;
+const BOX_SHADOW = `box-shadow: 4px 6px 24px 0px rgba(0, 0, 0, 0.2);`;
+
+const StyledWrapper = styled.div`
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  gap: 25px;
+  padding-top: 32px;
+
+  ${MEDIA_QUERY} {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 `;
 
-const StyledAside = styled.aside`
-  margin-bottom: 15px;
-  font-size: 20px;
-  font-style: italic;
+const StyledAside = styled.aside``;
+
+const StyledCard = styled.div`
+  padding: 32px;
+  background-color: #fdfcf9;
+  border-radius: 32px;
+  ${BOX_SHADOW}
 `;
 
-const StyledParagraph = styled.p`
-  margin-bottom: 25px;
+const StyledVerticalLogo = styled(Content)`
+  max-width: 100%;
+  border-radius: 32px;
+  ${BOX_SHADOW}
+
+  ${MEDIA_QUERY} {
+    display: none;
+  }
+`;
+
+const StyledAsideTitle = styled.h2`
+  margin: 20px 0;
+
+  ${MEDIA_QUERY} {
+    display: none;
+  }
+`;
+
+const StyledAsideButton = styled.a<{ $iconSize: number }>`
+  display: inline-block;
+  margin-top: 20px;
+  margin-right: 20px;
+  color: white;
+  background-color: #383838;
+  border-radius: 16px;
+  padding: 10px;
+  &:hover {
+    color: white;
+    background-color: #232323;
+  }
+  & svg {
+    height: ${({ $iconSize }) => $iconSize}px;
+    width: ${({ $iconSize }) => $iconSize}px;
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: bottom;
+  }
 `;
 
 const StyledYoutube = styled(YouTube)`
