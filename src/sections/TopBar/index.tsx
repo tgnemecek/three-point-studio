@@ -1,21 +1,47 @@
 import styled from "styled-components";
-import Section from "../../components/Section";
 import { Link } from "react-router-dom";
+import LanguageContext from "../../LanguageContext";
+import { useContext } from "react";
 
 const TopBar = () => {
+  const { language, setLanguage } = useContext(LanguageContext);
+
   return (
-    <Section>
+    <StyledAffix>
       <Link to="/">
         <StyledStudioName>Three-Point Studio</StyledStudioName>
       </Link>
-    </Section>
+      <StyledLanguageButton
+        onClick={() => setLanguage(language === "en" ? "pt" : "en")}
+      >
+        {language.toUpperCase()}
+      </StyledLanguageButton>
+    </StyledAffix>
   );
 };
 
+const StyledAffix = styled.div`
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  top: 0;
+  background-color: #00000082;
+  padding: 10px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 const StyledStudioName = styled.h1`
-  text-align: right;
+  text-align: left;
   font-size: 1.2rem;
-  color: #3a3a3a;
+  color: white;
+  display: inline;
+`;
+
+const StyledLanguageButton = styled.button`
+  background-color: initial;
+  color: white;
 `;
 
 export default TopBar;

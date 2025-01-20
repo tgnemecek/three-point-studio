@@ -1,22 +1,28 @@
 import { HashRouter, Routes, Route } from "react-router-dom";
+import styled from "styled-components";
 import TopBar from "./sections/TopBar";
 import Footer from "./sections/Footer";
 import Home from "./pages/Home";
 import Presskit from "./pages/Presskit";
-import styled from "styled-components";
+import { LanguageContextProvider } from "./LanguageContext";
 
 const App = () => {
   return (
     <StyledWrapper>
       <HashRouter>
-        <StyledInnerContainer>
-          <TopBar />
-          <Routes>
-            <Route path="/crystal_fortress/presskit" Component={Presskit} />
-            <Route path="*" Component={Home} />
-          </Routes>
-        </StyledInnerContainer>
-        <Footer />
+        <LanguageContextProvider>
+          <StyledInnerContainer>
+            <TopBar />
+            <Routes>
+              <Route
+                path="/crystal_fortress/presskit"
+                Component={() => <Presskit gameId="crystalFortress" />}
+              />
+              <Route path="*" Component={Home} />
+            </Routes>
+          </StyledInnerContainer>
+          <Footer />
+        </LanguageContextProvider>
       </HashRouter>
     </StyledWrapper>
   );

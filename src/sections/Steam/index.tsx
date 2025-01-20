@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import Section from "../../components/Section";
+import Content from "../../components/Content";
 import { STEAM_PAGE_URL } from "../../constants";
+import LanguageContext from "../../LanguageContext";
 import "./Steam.css";
 
 const Steam: React.FC = () => {
+  const { language } = useContext(LanguageContext);
+
   return (
     <Section>
       {/* Reference iframe: */}
@@ -18,7 +22,7 @@ const Steam: React.FC = () => {
         <div>
           <h3 className="Steam__title">Crystal Fortress</h3>
           <a className="Steam__tail" href={STEAM_PAGE_URL}>
-            on Steam
+            Steam
           </a>
         </div>
         <div className="Steam__description">
@@ -32,15 +36,17 @@ const Steam: React.FC = () => {
               src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2594740/capsule_184x69.jpg?t=1722001766"
             />
           </a>
-          Defend the Crystal Fortress and its people from invading forces in
-          this blend of Turn-Based Tactical RPGs and Tower Defense. Summon the
-          infantry, call out the archers, deploy turrets. Use all the available
-          tools to keep the enemies at bay!
+          <Content text={(c) => c.crystalFortress.steamSummary} />
         </div>
         <div className="Steam__cta">
           <div className="Steam__cta-inner">
             <div className="Steam__cta-date">
-              <h1>Available: Coming soon</h1>
+              <h1>
+                {Content.getGeneral((c) => c.available[language])}:{" "}
+                {Content.getSpecs(
+                  (c) => c.crystalFortress.releaseDate[language]
+                )}
+              </h1>
             </div>
             <div className="Steam__cta-button">
               <a
@@ -48,7 +54,7 @@ const Steam: React.FC = () => {
                 href={STEAM_PAGE_URL}
                 target="__blank"
               >
-                Wishlist on Steam
+                {Content.getGeneral((c) => c.wishlistOnSteam[language])}
               </a>
             </div>
           </div>

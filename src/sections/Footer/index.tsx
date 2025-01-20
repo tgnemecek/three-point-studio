@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import Section from "../../components/Section";
 import SocialLink from "../../components/SocialLink";
 import styled from "styled-components";
+import Content from "../../components/Content";
+import LanguageContext from "../../LanguageContext";
 
 const SOCIAL_MEDIA_DATA = [
   {
@@ -27,11 +29,15 @@ const SOCIAL_MEDIA_DATA = [
 ] as const;
 
 const Footer: React.FC = () => {
+  const { language } = useContext(LanguageContext);
+
   return (
     <StyledWrapper>
       <StyledFooter>
         <Section>
-          <StyledHeading>Join our community!</StyledHeading>
+          <StyledHeading>
+            {Content.getGeneral((c) => c.joinCommunity[language])}
+          </StyledHeading>
           <StyledSocialContainer>
             {SOCIAL_MEDIA_DATA.map(({ name, url, logo }) => (
               <SocialLink
