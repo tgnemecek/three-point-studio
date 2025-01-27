@@ -29,4 +29,5 @@ export const DEFAULT_TEXT_STYLES = `
   font-family: ${FONT_FAMILY};
   color: ${FONT_COLOR.text};
   font-weight: ${FONT_WEIGHT.text};
+  line-height: ${FONT_SIZES.text};
 `;

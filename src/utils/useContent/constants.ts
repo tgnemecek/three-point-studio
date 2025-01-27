@@ -1,3 +1,4 @@
+/** Crystal Fortress: */
 import cfLogoHorizontal from "../../content/crystal-fortress/logo-horizontal.png";
 import cfLogoVertical from "../../content/crystal-fortress/logo-vertical.png";
 import cfBackground from "../../content/crystal-fortress/background.png";
@@ -5,10 +6,14 @@ import cfReleaseEnglish from "../../content/crystal-fortress/press-release-en.md
 import cfReleasePortuguese from "../../content/crystal-fortress/press-release-pt.md";
 import cfSteamSummaryEnglish from "../../content/crystal-fortress/steam-summary-en.md";
 import cfSteamSummaryPortuguese from "../../content/crystal-fortress/steam-summary-pt.md";
+import cfSpecs from "../../content/crystal-fortress/specs.json";
 
+/** Studio: */
+import studioLogoHorizontal from "../../content/studio/studio-logo-horizontal.svg";
 import studioReleaseEnglish from "../../content/studio/press-release-en.md";
 import studioReleasePortuguese from "../../content/studio/press-release-pt.md";
-import cfSpecs from "../../content/crystal-fortress/specs.json";
+
+/** Misc: */
 import general from "../../content/general.json";
 
 const mapGeneral = (language: "en" | "pt") => {
@@ -35,11 +40,13 @@ export const ENGLISH_CONTENT = {
     images: IMAGE_CONTENT.crystalFortress,
     specs: {
       ...cfSpecs,
+      widgetLink: cfSpecs.widgetLink.en,
       releaseDate: cfSpecs.releaseDate.en,
     },
   },
   studio: {
     pressRelease: studioReleaseEnglish,
+    logoHorizontal: studioLogoHorizontal,
   },
   general: mapGeneral("en"),
 } as const;
@@ -51,10 +58,12 @@ export const PORTUGUESE_CONTENT: typeof ENGLISH_CONTENT = {
     images: IMAGE_CONTENT.crystalFortress,
     specs: {
       ...cfSpecs,
+      widgetLink: cfSpecs.widgetLink.pt,
       releaseDate: cfSpecs.releaseDate.pt,
     },
   },
   studio: {
+    ...ENGLISH_CONTENT.studio,
     pressRelease: studioReleasePortuguese,
   },
   general: mapGeneral("pt"),

@@ -2,10 +2,10 @@ import styled from "styled-components";
 import YouTube from "react-youtube";
 import Section from "../../components/Section";
 import Icon from "../../components/Icon";
-import Hero from "../../sections/Hero";
 import useContent from "../../utils/useContent";
 import { Markdown, Title, Text } from "../../components/Typography";
 import Button from "../../components/Button";
+import PresskitHero from "./PresskitHero";
 
 const VIDEO_DATA = {
   id: "s-YpILLFCac",
@@ -21,7 +21,7 @@ const Presskit = ({ gameId }: PresskitProps) => {
 
   return (
     <div>
-      <Hero
+      <PresskitHero
         backgroundImage={content[gameId].images.background}
         image={content[gameId].images.logoHorizontal}
         alt={`Logo: ${content[gameId].specs.title}`}

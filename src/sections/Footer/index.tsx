@@ -56,7 +56,7 @@ const Footer: React.FC = () => {
   );
 };
 
-const HEIGHT = 180;
+const HEIGHT = 160;
 
 const StyledSocialContainer = styled.div`
   display: flex;

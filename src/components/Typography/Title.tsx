@@ -7,12 +7,14 @@ type TitleProps = {
   level: 1 | 2 | 3 | 4 | 5;
   style?: CSSProperties;
   className?: string;
+  color?: "white";
 };
 
 export const Title: React.FC<TitleProps> = ({
   children,
   level,
   style,
+  color,
   className,
 }) => {
   const Tag = `h${level}` as const;
@@ -21,7 +23,7 @@ export const Title: React.FC<TitleProps> = ({
     <StyledTitle
       $fontSize={FONT_SIZES[Tag]}
       $fontWeight={level < 3 ? FONT_WEIGHT.title : FONT_WEIGHT.subtitle}
-      $color={FONT_COLOR.title}
+      $color={color ?? FONT_COLOR.title}
       style={style}
       className={className}
     >
