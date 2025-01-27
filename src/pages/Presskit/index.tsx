@@ -1,11 +1,10 @@
-import { useContext } from "react";
+import Markdown from "react-markdown";
 import styled from "styled-components";
 import YouTube from "react-youtube";
 import Section from "../../components/Section";
-import Content from "../../components/Content";
-import LanguageContext from "../../LanguageContext";
 import Icon from "../../components/Icon";
 import Hero from "../../sections/Hero";
+import useContent from "../../utils/useContent";
 
 const VIDEO_DATA = {
   id: "s-YpILLFCac",
@@ -17,48 +16,46 @@ type PresskitProps = {
 };
 
 const Presskit = ({ gameId }: PresskitProps) => {
-  const { language } = useContext(LanguageContext);
+  const content = useContent();
 
   return (
     <div>
       <Hero
-        backgroundImage={Content.getImage((c) => c[gameId].background)}
-        image={(c) => c[gameId].logoHorizontal}
-        alt={`${Content.getSpecs((c) => c[gameId].title)} logo`}
+        backgroundImage={content[gameId].images.background}
+        image={content[gameId].images.logoHorizontal}
+        alt={`Logo: ${content[gameId].specs.title}`}
       />
       <Section>
         <StyledWrapper>
           <StyledAside>
             <StyledVerticalLogo
-              image={(c) => c[gameId].logoVertical}
-              alt={`${Content.getSpecs((c) => c[gameId].title)} vertical logo`}
+              src={content[gameId].images.logoVertical}
+              alt={`Logo: ${content[gameId].specs.title}`}
             />
-            <StyledAsideTitle>
-              {Content.getSpecs((c) => c.crystalFortress.title)}
-            </StyledAsideTitle>
+            <StyledAsideTitle>{content[gameId].specs.title}</StyledAsideTitle>
             <StyledAsideButton
               $iconSize={20}
-              href={Content.getSpecs((c) => c.crystalFortress.assetKit)}
+              href={content[gameId].specs.assetKit}
               target="__blank"
               rel="noreferrer"
             >
-              {Content.getGeneral((c) => c.downloadImageAssets[language])}
+              {content.general.downloadImageAssets}
               <Icon icon="download" color="white" />
             </StyledAsideButton>
             <StyledAsideButton
               $iconSize={25}
-              href={Content.getSpecs((c) => c.crystalFortress.steamLink)}
+              href={content[gameId].specs.steamLink}
               target="__blank"
               rel="noreferrer"
             >
-              {Content.getGeneral((c) => c.goToStorePage[language])}
+              {content.general.goToStorePage}
               <Icon icon="steam" color="white" />
             </StyledAsideButton>
           </StyledAside>
           <StyledCard>
-            <Content text={(c) => c[gameId].pressRelease} />
+            <Markdown>{content[gameId].pressRelease}</Markdown>
             <StyledYoutube videoId={VIDEO_DATA.id} title={VIDEO_DATA.title} />
-            <Content text={(c) => c.studio.pressRelease} />
+            <Markdown>{content.studio.pressRelease}</Markdown>
           </StyledCard>
         </StyledWrapper>
       </Section>
@@ -74,6 +71,7 @@ const StyledWrapper = styled.div`
   grid-template-columns: 30% 1fr;
   gap: 25px;
   padding-top: 32px;
+  margin-bottom: 32px;
 
   ${MEDIA_QUERY} {
     display: flex;
@@ -90,7 +88,7 @@ const StyledCard = styled.div`
   ${BOX_SHADOW}
 `;
 
-const StyledVerticalLogo = styled(Content)`
+const StyledVerticalLogo = styled.img`
   max-width: 100%;
   border-radius: 32px;
   ${BOX_SHADOW}

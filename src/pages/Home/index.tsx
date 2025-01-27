@@ -1,16 +1,18 @@
-import Content from "../../components/Content";
 import Hero from "../../sections/Hero";
 import Steam from "../../sections/Steam";
+import useContent from "../../utils/useContent";
 
 const Home = () => {
+  const content = useContent();
+
   return (
     <div className="Home__main">
       <Hero
-        backgroundImage={Content.getImage((c) => c.crystalFortress.background)}
-        image={(c) => c.crystalFortress.logoHorizontal}
-        alt={Content.getSpecs((c) => `${c.crystalFortress.title} logo`)}
+        backgroundImage={content.crystalFortress.images.background}
+        image={content.crystalFortress.images.logoHorizontal}
+        alt={`Logo: ${content.crystalFortress.specs.title}`}
       />
-      <Steam />
+      <Steam gameId="crystalFortress" />
     </div>
   );
 };

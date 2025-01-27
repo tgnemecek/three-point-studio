@@ -1,12 +1,16 @@
-import React, { useContext } from "react";
+import React from "react";
 import Section from "../../components/Section";
-import Content from "../../components/Content";
 import { STEAM_PAGE_URL } from "../../constants";
-import LanguageContext from "../../LanguageContext";
+import useContent from "../../utils/useContent";
 import "./Steam.css";
+import Markdown from "react-markdown";
 
-const Steam: React.FC = () => {
-  const { language } = useContext(LanguageContext);
+type SteamProps = {
+  gameId: "crystalFortress";
+};
+
+const Steam: React.FC<SteamProps> = ({ gameId }) => {
+  const content = useContent();
 
   return (
     <Section>
@@ -36,16 +40,13 @@ const Steam: React.FC = () => {
               src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2594740/capsule_184x69.jpg?t=1722001766"
             />
           </a>
-          <Content text={(c) => c.crystalFortress.steamSummary} />
+          <Markdown>{content[gameId].steamSummary}</Markdown>
         </div>
         <div className="Steam__cta">
           <div className="Steam__cta-inner">
             <div className="Steam__cta-date">
               <h1>
-                {Content.getGeneral((c) => c.available[language])}:{" "}
-                {Content.getSpecs(
-                  (c) => c.crystalFortress.releaseDate[language]
-                )}
+                {content.general.available}: {content[gameId].specs.releaseDate}
               </h1>
             </div>
             <div className="Steam__cta-button">
@@ -54,7 +55,7 @@ const Steam: React.FC = () => {
                 href={STEAM_PAGE_URL}
                 target="__blank"
               >
-                {Content.getGeneral((c) => c.wishlistOnSteam[language])}
+                {content.general.wishlistOnSteam}
               </a>
             </div>
           </div>

@@ -1,7 +1,7 @@
+import { useContext } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import LanguageContext from "../../LanguageContext";
-import { useContext } from "react";
+import LanguageContext from "../../utils/LanguageContext";
 
 const TopBar = () => {
   const { language, setLanguage } = useContext(LanguageContext);

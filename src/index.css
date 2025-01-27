@@ -57,3 +57,10 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+@font-face {
+  font-family: "Futura-PT-Bold";
+  src: local("Futura-PT-Bold"), url("./fonts/Futura-PT-Bold.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
