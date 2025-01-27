@@ -3,7 +3,7 @@ import Section from "../../components/Section";
 import { STEAM_PAGE_URL } from "../../constants";
 import useContent from "../../utils/useContent";
 import "./Steam.css";
-import Markdown from "react-markdown";
+import { Markdown } from "../../components/Typography";
 
 type SteamProps = {
   gameId: "crystalFortress";

@@ -1,10 +1,10 @@
-import Markdown from "react-markdown";
 import styled from "styled-components";
 import YouTube from "react-youtube";
 import Section from "../../components/Section";
 import Icon from "../../components/Icon";
 import Hero from "../../sections/Hero";
 import useContent from "../../utils/useContent";
+import { Markdown } from "../../components/Typography";
 
 const VIDEO_DATA = {
   id: "s-YpILLFCac",
