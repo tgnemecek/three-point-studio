@@ -20,7 +20,7 @@ export const Title: React.FC<TitleProps> = ({
   return (
     <StyledTitle
       $fontSize={FONT_SIZES[Tag]}
-      $fontFamily={FONT_FAMILY.title}
+      $fontWeight={level < 3 ? FONT_WEIGHT.title : FONT_WEIGHT.subtitle}
       $color={FONT_COLOR.title}
       style={style}
       className={className}
@@ -32,13 +32,13 @@ export const Title: React.FC<TitleProps> = ({
 
 const StyledTitle = styled.div<{
   $fontSize: string;
-  $fontFamily: string;
+  $fontWeight: number;
   $color: string;
 }>`
   & > * {
     font-size: ${({ $fontSize }) => $fontSize};
-    font-family: ${({ $fontFamily }) => $fontFamily};
-    font-weight: ${FONT_WEIGHT.title};
+    font-family: ${FONT_FAMILY};
+    font-weight: ${({ $fontWeight }) => $fontWeight};
     color: ${({ $color }) => $color};
     line-height: 2.5rem;
   }

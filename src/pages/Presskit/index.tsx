@@ -4,7 +4,8 @@ import Section from "../../components/Section";
 import Icon from "../../components/Icon";
 import Hero from "../../sections/Hero";
 import useContent from "../../utils/useContent";
-import { Markdown } from "../../components/Typography";
+import { Markdown, Title, Text } from "../../components/Typography";
+import Button from "../../components/Button";
 
 const VIDEO_DATA = {
   id: "s-YpILLFCac",
@@ -32,25 +33,24 @@ const Presskit = ({ gameId }: PresskitProps) => {
               src={content[gameId].images.logoVertical}
               alt={`Logo: ${content[gameId].specs.title}`}
             />
-            <StyledAsideTitle>{content[gameId].specs.title}</StyledAsideTitle>
-            <StyledAsideButton
-              $iconSize={20}
+            <StyledAsideTitle>
+              <Title level={3}>{content[gameId].specs.title}</Title>
+              <Text>
+                {content.general.available}: {content[gameId].specs.releaseDate}
+              </Text>
+            </StyledAsideTitle>
+            <Button
+              Icon={<Icon icon="download" color="white" size={20} />}
               href={content[gameId].specs.assetKit}
-              target="__blank"
-              rel="noreferrer"
             >
               {content.general.downloadImageAssets}
-              <Icon icon="download" color="white" />
-            </StyledAsideButton>
-            <StyledAsideButton
-              $iconSize={25}
+            </Button>
+            <Button
+              Icon={<Icon icon="steam" color="white" size={25} />}
               href={content[gameId].specs.steamLink}
-              target="__blank"
-              rel="noreferrer"
             >
               {content.general.goToStorePage}
-              <Icon icon="steam" color="white" />
-            </StyledAsideButton>
+            </Button>
           </StyledAside>
           <StyledCard>
             <Markdown>{content[gameId].pressRelease}</Markdown>
@@ -98,32 +98,13 @@ const StyledVerticalLogo = styled.img`
   }
 `;
 
-const StyledAsideTitle = styled.h2`
-  margin: 20px 0;
+const StyledAsideTitle = styled.div`
+  > h3 {
+    margin: 20px 0;
 
-  ${MEDIA_QUERY} {
-    display: none;
-  }
-`;
-
-const StyledAsideButton = styled.a<{ $iconSize: number }>`
-  display: inline-block;
-  margin-top: 20px;
-  margin-right: 20px;
-  color: white;
-  background-color: #383838;
-  border-radius: 16px;
-  padding: 10px;
-  &:hover {
-    color: white;
-    background-color: #232323;
-  }
-  & svg {
-    height: ${({ $iconSize }) => $iconSize}px;
-    width: ${({ $iconSize }) => $iconSize}px;
-    margin-left: 10px;
-    display: inline-block;
-    vertical-align: bottom;
+    ${MEDIA_QUERY} {
+      display: none;
+    }
   }
 `;
 

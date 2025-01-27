@@ -1,11 +1,11 @@
 const ICON_LIBRARY: IconLibrary = {
-  bluesky: ({ color }) => (
+  bluesky: ({ color, size }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       x="0px"
       y="0px"
-      width="100"
-      height="100"
+      height={size}
+      width={size}
       viewBox="0 0 48 48"
     >
       {/* <linearGradient
@@ -26,13 +26,13 @@ const ICON_LIBRARY: IconLibrary = {
       ></path>
     </svg>
   ),
-  discord: ({ color }) => (
+  discord: ({ color, size }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       x="0px"
       y="0px"
-      width="100"
-      height="100"
+      height={size}
+      width={size}
       viewBox="9 17 30 15"
     >
       <path
@@ -49,13 +49,13 @@ const ICON_LIBRARY: IconLibrary = {
       ></path> */}
     </svg>
   ),
-  instagram: ({ color }) => (
+  instagram: ({ color, size }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       x="0px"
       y="0px"
-      width="100"
-      height="100"
+      height={size}
+      width={size}
       viewBox="0 0 32 32"
     >
       <path
@@ -64,13 +64,13 @@ const ICON_LIBRARY: IconLibrary = {
       ></path>
     </svg>
   ),
-  steam: ({ color }) => (
+  steam: ({ color, size }) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       x="0px"
       y="0px"
-      width="100"
-      height="100"
+      height={size}
+      width={size}
       viewBox="0 0 32 32"
     >
       <path
@@ -79,8 +79,8 @@ const ICON_LIBRARY: IconLibrary = {
       ></path>
     </svg>
   ),
-  download: ({ color }) => (
-    <svg height="19px" version="1.1" viewBox="0 0 14 19" width="14px">
+  download: ({ color, size }) => (
+    <svg height={size} width={size} version="1.1" viewBox="0 0 14 19">
       <title />
       <desc />
       <defs />
@@ -108,7 +108,7 @@ const ICON_LIBRARY: IconLibrary = {
   ),
 };
 
-type IconFnProps = { color?: string };
+type IconFnProps = { color?: string; size: number };
 
 type IconFn = (props: IconFnProps) => JSX.Element;
 

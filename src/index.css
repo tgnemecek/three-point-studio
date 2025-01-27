@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Futura, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -82,32 +82,3 @@ button:focus-visible {
   font-weight: 400;
   font-style: italic;
 }
-
-/* 
-@font-face {
-  font-family: "Futura-PT-Bold";
-  src: local("Futura-PT-Bold"), url("./fonts/Futura-PT-Bold.ttf");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Futura-PT-Medium";
-  src: local("Futura-PT-Medium"), url("./fonts/Futura-PT-Medium.ttf");
-  font-weight: normal;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "Futura-PT-Light";
-  src: local("Futura-PT-Light"), url("./fonts/Futura-PT-Light.otf");
-  font-weight: normal;
-}
-
-@font-face {
-  font-family: "Futura-PT-Light";
-  src: local("Futura-Italic-Light"), url("./fonts/Futura-Italic-Light.otf");
-  font-weight: 100;
-  font-style: italic;
-  font-size: smaller;
-} */

@@ -9,11 +9,7 @@ export const FONT_SIZES = {
   text: "1.2rem",
 } as const;
 
-export const FONT_FAMILY = {
-  title: "Futura, Times, sans-serif",
-  subtitle: "Futura, Times, sans-serif",
-  text: "Futura, Times, sans-serif",
-};
+export const FONT_FAMILY = "Futura, Times, sans-serif";
 
 export const FONT_COLOR = {
   title: Theme.dark.main,
@@ -30,7 +26,7 @@ export const FONT_WEIGHT = {
 
 export const DEFAULT_TEXT_STYLES = `
   font-size: ${FONT_SIZES.text};
-  font-family: ${FONT_FAMILY.text};
+  font-family: ${FONT_FAMILY};
   color: ${FONT_COLOR.text};
   font-weight: ${FONT_WEIGHT.text};
 `;
