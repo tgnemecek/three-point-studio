@@ -5,6 +5,7 @@ import { Text } from "../../components/Typography";
 import LanguageContext from "../../utils/LanguageContext";
 import useContent from "../../utils/useContent";
 import Theme from "../../components/Theme";
+import Icon from "../../components/Icon";
 
 const TopBar = () => {
   const { pathname } = useLocation();
@@ -46,9 +47,12 @@ const TopBar = () => {
           $logoOpacity={logoOpacity}
         />
       </Link>
-      <button onClick={() => setLanguage(language === "en" ? "pt" : "en")}>
+      <button
+        onClick={() => setLanguage(language === "en" ? "pt" : "en")}
+        aria-label="Change language"
+      >
         <Text color="white" bold>
-          {language.toUpperCase()}
+          <Icon icon={language === "en" ? "uk" : "brazil"} />
         </Text>
       </button>
     </StyledAffix>
