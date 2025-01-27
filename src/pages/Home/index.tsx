@@ -8,7 +8,11 @@ const Home = () => {
 
   return (
     <div className="Home__main">
-      <StyledHero image={content.studio.logoHorizontal} alt="Logo" />
+      <StyledHero
+        backgroundImage={content.studio.studioHero}
+        image={content.studio.logoWhiteHorizontal}
+        alt="Logo"
+      />
       <Steam gameId="crystalFortress" />
     </div>
   );
@@ -16,6 +20,13 @@ const Home = () => {
 
 const StyledHero = styled(Hero)`
   height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  > img {
+    width: 400px;
+  }
 `;
 
 export default Home;

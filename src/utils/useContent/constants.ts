@@ -9,7 +9,9 @@ import cfSteamSummaryPortuguese from "../../content/crystal-fortress/steam-summa
 import cfSpecs from "../../content/crystal-fortress/specs.json";
 
 /** Studio: */
+import studioHero from "../../content/studio/studio-hero.png";
 import studioLogoHorizontal from "../../content/studio/studio-logo-horizontal.svg";
+import studioLogoWhiteHorizontal from "../../content/studio/studio-logo-white-horizontal.svg";
 import studioReleaseEnglish from "../../content/studio/press-release-en.md";
 import studioReleasePortuguese from "../../content/studio/press-release-pt.md";
 
@@ -40,6 +42,7 @@ export const ENGLISH_CONTENT = {
     images: IMAGE_CONTENT.crystalFortress,
     specs: {
       ...cfSpecs,
+      steamLink: cfSpecs.steamLink.en,
       widgetLink: cfSpecs.widgetLink.en,
       releaseDate: cfSpecs.releaseDate.en,
     },
@@ -47,6 +50,8 @@ export const ENGLISH_CONTENT = {
   studio: {
     pressRelease: studioReleaseEnglish,
     logoHorizontal: studioLogoHorizontal,
+    logoWhiteHorizontal: studioLogoWhiteHorizontal,
+    studioHero,
   },
   general: mapGeneral("en"),
 } as const;
@@ -58,6 +63,7 @@ export const PORTUGUESE_CONTENT: typeof ENGLISH_CONTENT = {
     images: IMAGE_CONTENT.crystalFortress,
     specs: {
       ...cfSpecs,
+      steamLink: cfSpecs.steamLink.pt,
       widgetLink: cfSpecs.widgetLink.pt,
       releaseDate: cfSpecs.releaseDate.pt,
     },

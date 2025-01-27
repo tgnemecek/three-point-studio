@@ -10,11 +10,11 @@ type ButtonProps = {
 };
 
 const Button: React.FC<ButtonProps> = ({ href, children, Icon }) => {
-  const Tag = href ? "a" : ("button" as const);
+  const Tag = href ? "a" : "button";
 
   return (
     <StyledWrapper>
-      <Tag target="__blank" rel="noreferrer">
+      <Tag target="__blank" rel="noreferrer" href={href}>
         {children}
         {Icon}
       </Tag>
@@ -24,6 +24,7 @@ const Button: React.FC<ButtonProps> = ({ href, children, Icon }) => {
 
 const StyledWrapper = styled.div`
   & > * {
+    cursor: pointer;
     display: inline-block;
     margin-top: 20px;
     margin-right: 20px;
