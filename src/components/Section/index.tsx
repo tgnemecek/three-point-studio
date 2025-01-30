@@ -4,11 +4,16 @@ import styled from "styled-components";
 type SectionProps = {
   children: React.ReactNode;
   backgroundColor?: string;
+  className?: string;
 };
 
-const Section: React.FC<SectionProps> = ({ children, backgroundColor }) => {
+const Section: React.FC<SectionProps> = ({
+  children,
+  backgroundColor,
+  className,
+}) => {
   return (
-    <section style={{ backgroundColor }}>
+    <section style={{ backgroundColor }} className={className}>
       <StyledInner>{children}</StyledInner>
     </section>
   );

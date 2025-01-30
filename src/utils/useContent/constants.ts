@@ -12,6 +12,7 @@ import cfSpecs from "../../content/crystal-fortress/specs.json";
 import studioHero from "../../content/studio/studio-hero.png";
 import studioLogoHorizontal from "../../content/studio/studio-logo-horizontal.svg";
 import studioLogoWhiteHorizontal from "../../content/studio/studio-logo-white-horizontal.svg";
+import studioLogo3d from "../../content/studio/studio-logo-3d.png";
 import studioReleaseEnglish from "../../content/studio/press-release-en.md";
 import studioReleasePortuguese from "../../content/studio/press-release-pt.md";
 
@@ -51,6 +52,7 @@ export const ENGLISH_CONTENT = {
     pressRelease: studioReleaseEnglish,
     logoHorizontal: studioLogoHorizontal,
     logoWhiteHorizontal: studioLogoWhiteHorizontal,
+    logo3d: studioLogo3d,
     studioHero,
   },
   general: mapGeneral("en"),

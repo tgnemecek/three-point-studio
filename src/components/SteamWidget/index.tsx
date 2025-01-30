@@ -9,7 +9,7 @@ type SteamProps = {
   gameId: "crystalFortress";
 };
 
-const Steam: React.FC<SteamProps> = ({ gameId }) => {
+const SteamWidget: React.FC<SteamProps> = ({ gameId }) => {
   const content = useContent();
 
   return (
@@ -67,7 +67,7 @@ const StyledContainer = styled.div`
   box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.4);
   padding: 10px 15px;
   position: relative;
-  margin: 70px auto;
+  margin: 70px auto 20px auto;
 
   &:after {
     position: absolute;
@@ -162,4 +162,4 @@ const StyledButton = styled.div`
   }
 `;
 
-export default Steam;
+export default SteamWidget;

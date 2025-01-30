@@ -67,7 +67,8 @@ const StyledAffix = styled.div<{
   z-index: 1;
   top: 0;
   padding: 10px 25px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 80px 100px;
   align-items: center;
   justify-content: space-between;
 

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Theme from "../Theme";
 import { FONT_WEIGHT } from "../Typography/constants";
+import { Link } from "react-router-dom";
 
 type ButtonProps = {
   children?: React.ReactNode;
@@ -10,16 +11,32 @@ type ButtonProps = {
 };
 
 const Button: React.FC<ButtonProps> = ({ href, children, Icon }) => {
-  const Tag = href ? "a" : "button";
-
-  return (
-    <StyledWrapper>
-      <Tag target="__blank" rel="noreferrer" href={href}>
+  const renderComponent = () => {
+    if (!href) {
+      return (
+        <Button>
+          {children}
+          {Icon}
+        </Button>
+      );
+    }
+    if (href.startsWith("/")) {
+      return (
+        <Link to={href}>
+          {children}
+          {Icon}
+        </Link>
+      );
+    }
+    return (
+      <a href={href} target="__blank" rel="noreferrer">
         {children}
         {Icon}
-      </Tag>
-    </StyledWrapper>
-  );
+      </a>
+    );
+  };
+
+  return <StyledWrapper>{renderComponent()}</StyledWrapper>;
 };
 
 const StyledWrapper = styled.div`
