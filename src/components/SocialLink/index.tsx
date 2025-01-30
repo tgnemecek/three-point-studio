@@ -16,15 +16,14 @@ const SocialLink: React.FC<SocialLinkProps> = ({
   size = 25,
 }) => {
   return (
-    <StyledLink href={href} target="__blank" aria-label={name} $size={size}>
-      <Icon icon={logo} />
+    <StyledLink href={href} target="__blank" aria-label={name}>
+      <Icon icon={logo} size={size} />
     </StyledLink>
   );
 };
 
-const StyledLink = styled.a<{ $size: number }>`
+const StyledLink = styled.a`
   display: flex;
-  width: ${({ $size }) => $size}px;
 `;
 
 export default SocialLink;

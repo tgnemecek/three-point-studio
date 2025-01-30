@@ -1,10 +1,9 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Futura, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
   font-synthesis: none;
@@ -33,27 +32,36 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: transparent;
   cursor: pointer;
   transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+@font-face {
+  font-family: "Futura";
+  src: url("./fonts/Futura-PT-Light.otf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Futura";
+  src: url("./fonts/Futura-PT-Medium.ttf");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Futura";
+  src: url("./fonts/Futura-PT-Bold.ttf");
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: "Futura";
+  src: url("./fonts/Futura-Italic-Light.otf");
+  font-weight: 400;
+  font-style: italic;
 }

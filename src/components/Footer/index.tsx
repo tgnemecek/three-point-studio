@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import Section from "../../components/Section";
 import SocialLink from "../../components/SocialLink";
 import styled from "styled-components";
-import Content from "../../components/Content";
-import LanguageContext from "../../LanguageContext";
+import { Title } from "../../components/Typography";
+import Theme from "../../components/Theme";
+import useContent from "../../utils/useContent";
 
 const SOCIAL_MEDIA_DATA = [
   {
@@ -29,33 +30,33 @@ const SOCIAL_MEDIA_DATA = [
 ] as const;
 
 const Footer: React.FC = () => {
-  const { language } = useContext(LanguageContext);
+  const content = useContent();
 
   return (
     <StyledWrapper>
       <StyledFooter>
         <Section>
-          <StyledHeading>
-            {Content.getGeneral((c) => c.joinCommunity[language])}
-          </StyledHeading>
-          <StyledSocialContainer>
-            {SOCIAL_MEDIA_DATA.map(({ name, url, logo }) => (
-              <SocialLink
-                href={url}
-                key={name}
-                name={name}
-                logo={logo}
-                size={80}
-              />
-            ))}
-          </StyledSocialContainer>
+          <StyledCard>
+            <Title level={2}>{content.general.joinCommunity}</Title>
+            <StyledSocialContainer>
+              {SOCIAL_MEDIA_DATA.map(({ name, url, logo }) => (
+                <SocialLink
+                  href={url}
+                  key={name}
+                  name={name}
+                  logo={logo}
+                  size={80}
+                />
+              ))}
+            </StyledSocialContainer>
+          </StyledCard>
         </Section>
       </StyledFooter>
     </StyledWrapper>
   );
 };
 
-const HEIGHT = 220;
+const HEIGHT = 160;
 
 const StyledSocialContainer = styled.div`
   display: flex;
@@ -67,13 +68,6 @@ const StyledWrapper = styled.div`
   margin-top: ${HEIGHT}px;
 `;
 
-const StyledHeading = styled.h2`
-  font-size: 2rem;
-  margin: 10px 0 30px 0;
-  color: #2d2d2d;
-  text-align: center;
-`;
-
 const StyledFooter = styled.footer`
   position: fixed;
   left: 0;
@@ -82,7 +76,10 @@ const StyledFooter = styled.footer`
   color: white;
   text-align: center;
   height: ${HEIGHT}px;
-  background-color: #8fb4ab;
+  background-color: ${Theme.white.main};
+  box-shadow: 4px 6px 24px 0px rgba(0, 0, 0, 0.2);
 `;
+
+const StyledCard = styled.div``;
 
 export default Footer;

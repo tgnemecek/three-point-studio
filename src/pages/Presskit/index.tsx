@@ -1,11 +1,11 @@
-import { useContext } from "react";
 import styled from "styled-components";
 import YouTube from "react-youtube";
 import Section from "../../components/Section";
-import Content from "../../components/Content";
-import LanguageContext from "../../LanguageContext";
 import Icon from "../../components/Icon";
-import Hero from "../../sections/Hero";
+import useContent from "../../utils/useContent";
+import { Markdown, Title, Text } from "../../components/Typography";
+import Button from "../../components/Button";
+import PresskitHero from "./PresskitHero";
 
 const VIDEO_DATA = {
   id: "s-YpILLFCac",
@@ -17,48 +17,45 @@ type PresskitProps = {
 };
 
 const Presskit = ({ gameId }: PresskitProps) => {
-  const { language } = useContext(LanguageContext);
+  const content = useContent();
 
   return (
     <div>
-      <Hero
-        backgroundImage={Content.getImage((c) => c[gameId].background)}
-        image={(c) => c[gameId].logoHorizontal}
-        alt={`${Content.getSpecs((c) => c[gameId].title)} logo`}
+      <PresskitHero
+        backgroundImage={content[gameId].images.background}
+        image={content[gameId].images.logoHorizontal}
+        alt={`Logo: ${content[gameId].specs.title}`}
       />
       <Section>
         <StyledWrapper>
           <StyledAside>
             <StyledVerticalLogo
-              image={(c) => c[gameId].logoVertical}
-              alt={`${Content.getSpecs((c) => c[gameId].title)} vertical logo`}
+              src={content[gameId].images.logoVertical}
+              alt={`Logo: ${content[gameId].specs.title}`}
             />
             <StyledAsideTitle>
-              {Content.getSpecs((c) => c.crystalFortress.title)}
+              <Title level={3}>{content[gameId].specs.title}</Title>
+              <Text>
+                {content.general.available}: {content[gameId].specs.releaseDate}
+              </Text>
             </StyledAsideTitle>
-            <StyledAsideButton
-              $iconSize={20}
-              href={Content.getSpecs((c) => c.crystalFortress.assetKit)}
-              target="__blank"
-              rel="noreferrer"
+            <Button
+              Icon={<Icon icon="download" color="white" size={20} />}
+              href={content[gameId].specs.assetKit}
             >
-              {Content.getGeneral((c) => c.downloadImageAssets[language])}
-              <Icon icon="download" color="white" />
-            </StyledAsideButton>
-            <StyledAsideButton
-              $iconSize={25}
-              href={Content.getSpecs((c) => c.crystalFortress.steamLink)}
-              target="__blank"
-              rel="noreferrer"
+              {content.general.downloadImageAssets}
+            </Button>
+            <Button
+              Icon={<Icon icon="steam" color="white" size={25} />}
+              href={content[gameId].specs.steamLink}
             >
-              {Content.getGeneral((c) => c.goToStorePage[language])}
-              <Icon icon="steam" color="white" />
-            </StyledAsideButton>
+              {content.general.goToStorePage}
+            </Button>
           </StyledAside>
           <StyledCard>
-            <Content text={(c) => c[gameId].pressRelease} />
+            <Markdown>{content[gameId].pressRelease}</Markdown>
             <StyledYoutube videoId={VIDEO_DATA.id} title={VIDEO_DATA.title} />
-            <Content text={(c) => c.studio.pressRelease} />
+            <Markdown>{content.studio.pressRelease}</Markdown>
           </StyledCard>
         </StyledWrapper>
       </Section>
@@ -74,6 +71,7 @@ const StyledWrapper = styled.div`
   grid-template-columns: 30% 1fr;
   gap: 25px;
   padding-top: 32px;
+  margin-bottom: 32px;
 
   ${MEDIA_QUERY} {
     display: flex;
@@ -90,7 +88,7 @@ const StyledCard = styled.div`
   ${BOX_SHADOW}
 `;
 
-const StyledVerticalLogo = styled(Content)`
+const StyledVerticalLogo = styled.img`
   max-width: 100%;
   border-radius: 32px;
   ${BOX_SHADOW}
@@ -100,32 +98,13 @@ const StyledVerticalLogo = styled(Content)`
   }
 `;
 
-const StyledAsideTitle = styled.h2`
-  margin: 20px 0;
+const StyledAsideTitle = styled.div`
+  > h3 {
+    margin: 20px 0;
 
-  ${MEDIA_QUERY} {
-    display: none;
-  }
-`;
-
-const StyledAsideButton = styled.a<{ $iconSize: number }>`
-  display: inline-block;
-  margin-top: 20px;
-  margin-right: 20px;
-  color: white;
-  background-color: #383838;
-  border-radius: 16px;
-  padding: 10px;
-  &:hover {
-    color: white;
-    background-color: #232323;
-  }
-  & svg {
-    height: ${({ $iconSize }) => $iconSize}px;
-    width: ${({ $iconSize }) => $iconSize}px;
-    margin-left: 10px;
-    display: inline-block;
-    vertical-align: bottom;
+    ${MEDIA_QUERY} {
+      display: none;
+    }
   }
 `;
 

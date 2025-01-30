@@ -1,17 +1,20 @@
 import React from "react";
 import styled from "styled-components";
-import Content, { ImageContentProps } from "../../components/Content";
 
-type HeroProps = {
+type PresskitHeroProps = {
   backgroundImage: string;
-  image: ImageContentProps["image"];
+  image: string;
   alt: string;
 };
 
-const Hero: React.FC<HeroProps> = ({ image, backgroundImage, alt }) => {
+const PresskitHero: React.FC<PresskitHeroProps> = ({
+  image,
+  backgroundImage,
+  alt,
+}) => {
   return (
     <StyledHeroWrapper $backgroundImage={backgroundImage}>
-      <Content image={image} alt={alt} />
+      <img src={image} alt={alt} />
     </StyledHeroWrapper>
   );
 };
@@ -32,4 +35,4 @@ const StyledHeroWrapper = styled.div<{ $backgroundImage: string }>`
   }
 `;
 
-export default Hero;
+export default PresskitHero;

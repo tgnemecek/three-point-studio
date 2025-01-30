@@ -18,5 +18,9 @@
   "available": {
     "en": "Available",
     "pt": "Disponível"
+  },
+  "readPressRelease": {
+    "en": "Read the Press Release →",
+    "pt": "Ler o Press Release →"
   }
 }
