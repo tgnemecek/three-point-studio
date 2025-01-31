@@ -11,6 +11,7 @@
   "dependencies": {
     "@mui/material": "^6.4.1",
     "@mui/styled-engine": "npm:@mui/styled-engine-sc@latest",
+    "@react-hook/window-size": "^3.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-markdown": "^9.0.3",

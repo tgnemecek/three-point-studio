@@ -1,4 +1,5 @@
 import React from "react";
+import { useWindowWidth } from "@react-hook/window-size";
 import Section from "../../components/Section";
 import SocialLink from "../../components/SocialLink";
 import styled from "styled-components";
@@ -8,8 +9,11 @@ import useContent from "../../utils/useContent";
 
 const Footer: React.FC = () => {
   const content = useContent();
-
   type SocialMediaId = keyof typeof content.socialMedia;
+
+  const windowWidth = useWindowWidth();
+
+  const iconSize = windowWidth > 450 ? 80 : 50;
 
   return (
     <StyledWrapper>
@@ -28,7 +32,7 @@ const Footer: React.FC = () => {
                       key={name}
                       name={name}
                       logo={key}
-                      size={80}
+                      size={iconSize}
                     />
                   );
                 }
