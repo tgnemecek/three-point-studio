@@ -6,31 +6,10 @@ import { Title } from "../../components/Typography";
 import Theme from "../../components/Theme";
 import useContent from "../../utils/useContent";
 
-const SOCIAL_MEDIA_DATA = [
-  {
-    name: "Discord",
-    url: "https://discord.gg/XMVmWzYgUw",
-    logo: "discord",
-  },
-  {
-    name: "Instagram",
-    url: "https://www.instagram.com/three_point_studio/",
-    logo: "instagram",
-  },
-  {
-    name: "BlueSky",
-    url: "https://bsky.app/profile/wearethreepointstudio.com",
-    logo: "bluesky",
-  },
-  {
-    name: "Community Hub",
-    url: "https://steamcommunity.com/app/2594740",
-    logo: "steam",
-  },
-] as const;
-
 const Footer: React.FC = () => {
   const content = useContent();
+
+  type SocialMediaId = keyof typeof content.socialMedia;
 
   return (
     <StyledWrapper>
@@ -39,15 +18,21 @@ const Footer: React.FC = () => {
           <StyledCard>
             <Title level={2}>{content.general.joinCommunity}</Title>
             <StyledSocialContainer>
-              {SOCIAL_MEDIA_DATA.map(({ name, url, logo }) => (
-                <SocialLink
-                  href={url}
-                  key={name}
-                  name={name}
-                  logo={logo}
-                  size={80}
-                />
-              ))}
+              {(Object.keys(content.socialMedia) as SocialMediaId[]).map(
+                (key) => {
+                  const { name, url } = content.socialMedia[key];
+
+                  return (
+                    <SocialLink
+                      href={url}
+                      key={name}
+                      name={name}
+                      logo={key}
+                      size={80}
+                    />
+                  );
+                }
+              )}
             </StyledSocialContainer>
           </StyledCard>
         </Section>

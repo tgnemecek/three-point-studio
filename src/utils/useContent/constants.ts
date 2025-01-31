@@ -18,6 +18,7 @@ import studioReleasePortuguese from "../../content/studio/press-release-pt.md";
 
 /** Misc: */
 import general from "../../content/general.json";
+import socialMedia from "../../content/social-media.json";
 
 const mapGeneral = (language: "en" | "pt") => {
   return Object.keys(general).reduce((acc, key) => {
@@ -56,6 +57,7 @@ export const ENGLISH_CONTENT = {
     studioHero,
   },
   general: mapGeneral("en"),
+  socialMedia,
 } as const;
 
 export const PORTUGUESE_CONTENT: typeof ENGLISH_CONTENT = {
@@ -75,4 +77,5 @@ export const PORTUGUESE_CONTENT: typeof ENGLISH_CONTENT = {
     pressRelease: studioReleasePortuguese,
   },
   general: mapGeneral("pt"),
+  socialMedia,
 };
