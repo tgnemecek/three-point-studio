@@ -57,6 +57,8 @@ const SteamWidget: React.FC<SteamProps> = ({ gameId }) => {
   );
 };
 
+const MEDIA_QUERY = `@media screen and (max-width: 600px)`;
+
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -83,6 +85,7 @@ const StyledContainer = styled.div`
 `;
 
 const StyledDescription = styled.div`
+  padding-bottom: 20px;
   margin: 10px 10px 0 0;
   color: #c9c9c9;
   overflow: hidden;
@@ -91,6 +94,12 @@ const StyledDescription = styled.div`
   -webkit-box-orient: vertical;
   display: grid;
   grid-template-columns: 250px 1fr;
+
+  ${MEDIA_QUERY} {
+    & {
+      grid-template-columns: 1fr;
+    }
+  }
 `;
 
 const StyledCapsule = styled.a`
@@ -102,6 +111,12 @@ const StyledCapsule = styled.a`
     position: relative;
     top: -10px;
     left: -10px;
+    ${MEDIA_QUERY} {
+      & {
+        top: 0;
+        left: 0;
+      }
+    }
   }
 `;
 
@@ -118,21 +133,32 @@ const StyledCTA = styled.div`
     background: linear-gradient(60deg, #395021 5%, #283e18 95%);
     height: auto;
     font-size: 20px;
+
+    ${MEDIA_QUERY} {
+      & {
+        padding: 0px;
+      }
+    }
   }
 `;
 
 const StyledDate = styled.div`
   float: left;
   font-size: 1em;
-  margin-left: 2px;
+  margin: 0 10px 0 2px;
   vertical-align: middle;
   line-height: 1.6;
   font-weight: ${FONT_WEIGHT.subtitle};
+
+  ${MEDIA_QUERY} {
+    & {
+      display: none;
+    }
+  }
 `;
 
 const StyledButton = styled.div`
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-  margin-left: 10px;
   position: relative;
   display: inline-block;
   vertical-align: middle;

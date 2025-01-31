@@ -29,6 +29,14 @@ const StyledHeroWrapper = styled.div<{ $backgroundImage?: string }>`
   background-size: cover;
   background-position: center;
   height: 250px;
+  padding: 40px;
+
+  @media screen and (max-width: 600px) {
+    & {
+      background-position: 60% 50%;
+    }
+  }
+
   & > img {
     width: 100%;
     max-width: 500px;
